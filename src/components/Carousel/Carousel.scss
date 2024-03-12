@@ -1,0 +1,67 @@
+.title {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 24px;
+  line-height: 28.15px;
+  letter-spacing: 2.16px;
+  font-weight: 300;
+  color: #ffffff;
+
+  padding-left: 35px;
+  margin: 0;
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.items-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  flex-grow: 1;
+  padding: 0;
+}
+
+.item {
+  background-color: #545454;
+}
+
+.item--small {
+  width: 140px;
+  height: 215px;
+}
+
+.item--big {
+  width: 300px;
+  height: 490px;
+}
+
+.item-link {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.button {
+  opacity: 0.4;
+  width: 55px;
+  height: 75px;
+  background-color: rgb(51, 48, 48);
+  font-size: 0;
+  border: none;
+
+  &:hover {
+    opacity: 0.3;
+  }
+}
+
+.prev-button {
+  margin-right: 15px;
+}
+
+.next-button {
+  margin-left: 15px;
+}
