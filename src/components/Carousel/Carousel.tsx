@@ -2,14 +2,18 @@ import React, {FC} from 'react';
 import "./Carousel.scss";
 import {ReactComponent as LeftArrowIcon} from "../../images/arrow_left.svg";
 import {ReactComponent as RightArrowIcon} from "../../images/arrow_right.svg";
+import Card from "../Card/Card";
 
 const Carousel: FC<any> = ({items, title, size}) => {
     let itemClass = 'item';
+    let buttonClass = 'button'
     switch(size){
         case 1:
+            buttonClass += ' button--small'
             itemClass += ' item--small'
             break;
         case 2:
+            buttonClass += ' button--big'
             itemClass += ' item--big'
             break;
     }
@@ -20,25 +24,28 @@ const Carousel: FC<any> = ({items, title, size}) => {
                     : <></>
             }
             <div className="carousel-container">
-                <button className="button prev-button">
+                <button className={buttonClass + " prev-button"}>
                     <LeftArrowIcon/>
                     Назад
                 </button>
                 <ul className="items-list">
                     {
-                        items.map(() => <li className={itemClass}>
-                            <a className="item-link" href=""></a>
+                        size == 1
+                            ? items.slice(0, 7).map((item) => <li className={itemClass}>
+                            <Card bookInfo={item}/>
                         </li>)
+                            : items.slice(0, 5).map((item) => <li className={itemClass}>
+                                <Card bookInfo={item}/>
+                            </li>)
                     }
                 </ul>
-                <button className="button next-button">
+                <button className={buttonClass + " next-button"}>
                     <RightArrowIcon/>
                     Вперед
                 </button>
             </div>
         </>
-    )
-
+    );
 };
 
 export default Carousel;
