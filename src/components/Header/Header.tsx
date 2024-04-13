@@ -3,6 +3,7 @@ import './Header.scss';
 import {ReactComponent as FavouritesIcon} from "../../images/favourites.svg";
 import {ReactComponent as ProfileIcon} from "../../images/profile.svg";
 import {ReactComponent as SearchIcon} from "../../images/search.svg";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
@@ -10,10 +11,10 @@ const Header = () => {
             <div>
                 <nav className="nav">
                     <div className="nav-links">
-                        <a className="logo nav-link" href="src/components#">easy-lab</a>
-                        <a className="nav-link" href="src/components">Главная</a>
-                        <a className="nav-link" href="src/components">Каталог</a>
-                        <a className="nav-link" href="src/components">Топы</a>
+                        <Link to={`/`} className={'logo nav-link'}>easy-lab</Link>
+                        <Link to={`/`} className={'nav-link'}>Главная</Link>
+                        <Link to={`/`} className={'nav-link'}>Каталог</Link>
+                        <Link to={`/`} className={'nav-link'}>Топы</Link>
                     </div>
 
                     <div className="profile-links">
