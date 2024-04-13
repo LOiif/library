@@ -1,0 +1,31 @@
+@import "../../styles/variables.scss";
+
+.main {
+  padding: 60px 140px 0 140px;
+  color: $main-color;
+  font-family: $main-font;
+  letter-spacing: $main-letter-spacing;
+  min-height: calc(100vh - 65px);
+  background-color: $main-background;
+}
+
+.container {
+  display: flex;
+}
+
+.bookInfo {
+  margin-left: 40px;
+}
+
+.img {
+  width: 240px;
+  height: 380px;
+
+  border: transparent 2px solid;
+  border-radius: 10px;
+}
+
+.bookTitle {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
