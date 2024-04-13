@@ -7,7 +7,7 @@ import Card from "../Card/Card";
 const Carousel: FC<any> = ({items, title, size}) => {
     let itemClass = 'item';
     let buttonClass = 'button'
-    switch(size){
+    switch (size) {
         case 1:
             buttonClass += ' button--small'
             itemClass += ' item--small'
@@ -31,10 +31,10 @@ const Carousel: FC<any> = ({items, title, size}) => {
                 <ul className="items-list">
                     {
                         size == 1
-                            ? items.slice(0, 7).map((item) => <li className={itemClass}>
-                            <Card bookInfo={item}/>
-                        </li>)
-                            : items.slice(0, 5).map((item) => <li className={itemClass}>
+                            ? items.slice(0, 7).map((item) => <li key={item.id} className={itemClass}>
+                                <Card bookInfo={item}/>
+                            </li>)
+                            : items.slice(0, 5).map((item) => <li key={item.id} className={itemClass}>
                                 <Card bookInfo={item}/>
                             </li>)
                     }

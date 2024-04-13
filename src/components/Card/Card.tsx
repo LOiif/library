@@ -1,32 +1,27 @@
 import React, {FC, useEffect, useState} from 'react';
 import './Card.scss';
-import axios from "axios";
+import {Link} from "react-router-dom";
+
 const Card: FC<any> = ({bookInfo}) => {
     const [thumbnail, setThumbnail] = useState('')
     useEffect(() => {
-        console.log('item: ')
-        console.log(bookInfo)
         setThumbnail(bookInfo.volumeInfo.imageLinks && bookInfo.volumeInfo.imageLinks.smallThumbnail)
     }, [bookInfo]);
 
-
-    return thumbnail != undefined ?
-         (
-            <>
-                <div className={'card'}>
-                    <img className={"img"} src={thumbnail}/>
-                    <div className={"info"}>
-                        {
-                            bookInfo.volumeInfo.title ?
-                                <p className="book_title">{bookInfo.volumeInfo.title}</p>
-                                : <></>
-                        }
-                    </div>
+    return (
+        <>
+            <Link to={`book/${bookInfo.id}`} state={{bookInfo}} className={'card'}>
+                <img className={"img"} src={thumbnail != undefined ? thumbnail : ''}/>
+                <div className={"info"}>
+                    {
+                        bookInfo.volumeInfo.title ?
+                            <p className="book_title">{bookInfo.volumeInfo.title}</p>
+                            : <></>
+                    }
                 </div>
-            </>
-        )
-        : <></>
-
+            </Link>
+        </>
+    )
 };
 
 export default Card;
