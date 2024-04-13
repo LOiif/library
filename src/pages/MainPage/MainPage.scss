@@ -1,8 +1,10 @@
+@import "../../styles/variables.scss";
+
 .main {
   padding: 60px 140px 0 140px;
 
   min-height: calc(100vh - 65px);
-  background-color: #0c0c0c;
+  background-color: $main-background;
 }
 
 .mb {
