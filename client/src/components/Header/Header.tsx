@@ -33,7 +33,7 @@ const Header = () => {
                             <i className="icon icon-profile"><ProfileIcon/></i>
                             Профиль
                         </a>
-                        <a className="profile-nav-item login-button" href="src/components">Войти</a>
+                        <Link to={`/login`} className={'profile-nav-item login-button'}>Войти</Link>
                     </div>
                 </nav>
             </div>

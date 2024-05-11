@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 a {
   color: inherit;
   text-decoration: none;
@@ -30,7 +32,7 @@ a {
 .logo {
   line-height: 40px;
   font-size: 40px;
-  font-family: 'Libre Barcode 128 Text', system-ui;
+  font-family: $logo-font;
 }
 
 .profile-links {
