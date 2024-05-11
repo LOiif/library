@@ -1,0 +1,16 @@
+@import "variables";
+
+body {
+  min-height: 100vh;
+  color: $main-color;
+  font-family: $main-font;
+  letter-spacing: $main-letter-spacing;
+  background-color: $main-background;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
