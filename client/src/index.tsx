@@ -1,17 +1,30 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import {RouterProvider} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import {router} from "./Routes/Routes";
+import Store from "./store/store";
+
+interface State {
+    store: Store,
+}
+
+export const store = new Store();
+
+export const Context = createContext<State>({
+    store,
+})
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
-    <React.StrictMode>
-        <RouterProvider router={router}/>
-    </React.StrictMode>
+        <Context.Provider value={{
+            store
+        }}>
+            <RouterProvider router={router}/>
+        </Context.Provider>,
 );
 
 // If you want to start measuring performance in your app, pass a function

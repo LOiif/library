@@ -1,0 +1,12 @@
+@import './../../styles/variables.scss';
+
+.main {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  color: $main-color;
+  font-family: $main-font;
+  letter-spacing: $main-letter-spacing;
+  background-color: $main-background;
+  padding: 120px 20px;
+}
