@@ -74,6 +74,17 @@ class UserService {
         return {...tokens, user: userDto}
     }
 
+    async addFavourites (userID, bookID) {
+        if (!userID) {
+            throw ApiError.UnauthorizedError();
+        }
+        const user = await UserModel.findById(userID);
+        if(!user.favourites.includes(bookID)){
+            user.favourites.push(bookID)
+            user.save()
+        }
+        return user
+    }
 }
 
 module.exports = new UserService()

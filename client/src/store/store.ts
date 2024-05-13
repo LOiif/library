@@ -4,6 +4,7 @@ import AuthService from "../services/AuthService";
 import axios from 'axios';
 import {AuthResponse} from "../models/response/AuthResponse";
 import {API_URL} from "../http";
+import UserService from "../services/UserService";
 
 export default class Store {
     user = {} as IUser;
@@ -37,6 +38,9 @@ export default class Store {
         this.isLoading = bool;
     }
 
+    getUser () {
+        return this.user;
+    }
     async login(email: string, password: string) {
         try {
             const response = await AuthService.login(email, password);
@@ -89,6 +93,15 @@ export default class Store {
             console.log(e.response?.data?.message);
         } finally {
             this.setLoading(false);
+        }
+    }
+    async addFavourites(userID: string, bookID: string) {
+        try {
+            const response = await UserService.addFavourites(userID, bookID);
+
+        } catch (e) {
+            this.setRegistrationError(e.response?.data);
+            console.log(e.response?.data);
         }
     }
 }

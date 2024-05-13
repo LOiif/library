@@ -3,7 +3,6 @@ const {validationResult} = require('express-validator')
 const ApiError = require('../exceptions/api-error')
 
 class UserController {
-
     async registration(req, res, next) {
         try {
             const errors = validationResult(req)
@@ -71,6 +70,17 @@ class UserController {
         } catch (e) {
             next(e);
         }
+    }
+
+    async addFavourites(req, res, next) {
+        try {
+            const {userID, bookID} = req.body;
+            const user = await userService.addFavourites(userID, bookID)
+            return res.json(user)
+        } catch (e) {
+            next(e)
+        }
+
     }
 }
 

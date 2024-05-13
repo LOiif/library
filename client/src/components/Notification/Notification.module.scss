@@ -1,0 +1,35 @@
+@import "../../styles/variables";
+
+.container {
+  position: absolute;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px 8px;
+  bottom: 20px;
+  border-radius: 2px;
+  right: 20px;
+  background-color: #7e1d1d;
+  color: $main-color;
+  animation-duration: 0.45s;
+  animation-name: slidein;
+}
+
+.message {
+  margin: 0;
+  font-family: $main-font;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
