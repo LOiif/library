@@ -48,7 +48,7 @@
   display: flex;
 }
 
-.bookInfo {
+.contentContainer {
   margin-left: 40px;
 }
 
@@ -63,4 +63,34 @@
 .bookTitle {
   font-size: 28px;
   margin-bottom: 10px;
+}
+
+.commentsTitle {
+  color: $main-color;
+  font-size: 24px;
+}
+
+.notAuthMessage {
+  padding: 15px 20px;
+  width: max-content;
+  background-color: #1e1e1e;
+  margin: auto auto;
+}
+
+.commentsInput {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: inherit;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid $main-color;
+  font-family: inherit;
+  font-size: 18px;
+  color: $main-color;
+
+  &:focus {
+    outline: 1px solid $main-color;
+    border-radius: 4px;
+  }
 }

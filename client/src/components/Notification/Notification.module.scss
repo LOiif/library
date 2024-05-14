@@ -2,7 +2,7 @@
 
 .container {
   position: absolute;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,8 +13,17 @@
   right: 20px;
   background-color: #7e1d1d;
   color: $main-color;
-  animation-duration: 0.45s;
-  animation-name: slidein;
+  animation: fade 0.45s ease forwards;
+}
+
+.closeButton {
+  font-size: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  color:transparent;
+  background-color: inherit;
+  margin-left: 15px;
 }
 
 .message {
@@ -22,7 +31,7 @@
   font-family: $main-font;
 }
 
-@keyframes slidein {
+@keyframes fade {
   from {
     transform: translateX(20px);
     opacity: 0;
