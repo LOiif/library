@@ -3,7 +3,10 @@ import {AuthResponse} from "../models/response/AuthResponse";
 import {store} from "../index";
 import {IUser} from "../models/IUser";
 
-export const API_URL = `http://79.137.199.47:5000/api`
+// prod
+// export const API_URL = `http://79.137.199.47:5000/api`
+
+export const API_URL = `http://192.168.1.90:5000/api`
 
 const $api = axios.create({
     withCredentials: true,
