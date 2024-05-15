@@ -11,6 +11,8 @@ export default class Store {
     isAuth = false;
     isLoading = false;
 
+    isFavourite = false;
+
     loginError = null;
     registrationError = null;
 
@@ -99,6 +101,26 @@ export default class Store {
         try {
             const response = await UserService.addFavourites(userID, bookID);
 
+        } catch (e) {
+            this.setRegistrationError(e.response?.data);
+            console.log(e.response?.data);
+        }
+    }
+
+    async changeFavouriteStatus(userID: string, bookID: string) {
+        try {
+            const response = await UserService.changeFavouriteStatus(userID, bookID);
+
+        } catch (e) {
+            this.setRegistrationError(e.response?.data);
+            console.log(e.response?.data);
+        }
+    }
+
+    async findFavourite(userID: string, bookID: string) {
+        try {
+            const response = await UserService.findFavourite(userID, bookID);
+            return response.data
         } catch (e) {
             this.setRegistrationError(e.response?.data);
             console.log(e.response?.data);

@@ -74,16 +74,46 @@ class UserService {
         return {...tokens, user: userDto}
     }
 
-    async addFavourites (userID, bookID) {
+    async addFavourites(userID, bookID) {
         if (!userID) {
             throw ApiError.UnauthorizedError();
         }
         const user = await UserModel.findById(userID);
-        if(!user.favourites.includes(bookID)){
+        if (!user.favourites.includes(bookID)) {
             user.favourites.push(bookID)
             user.save()
         }
         return user
+    }
+
+    async changeFavouriteStatus(userID, bookID) {
+        if (!userID) {
+            throw ApiError.UnauthorizedError();
+        }
+        let isFavourites = false;
+        const user = await UserModel.findById(userID);
+        if (!user.favourites.includes(bookID)) {
+            isFavourites = true
+            user.favourites.push(bookID)
+            user.save()
+        } else {
+            isFavourites = false
+            user.favourites = user.favourites.filter((el) => el !== bookID);
+            user.save();
+        }
+        return {user, isFavourites}
+    }
+
+    async findFavourite(userID, bookID) {
+        if (!userID) {
+            throw ApiError.UnauthorizedError();
+        }
+        const user = await UserModel.findById(userID);
+
+        const result = user.favourites.includes(bookID);
+        user.save()
+        return result
+
     }
 }
 

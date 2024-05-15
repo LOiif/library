@@ -2,25 +2,35 @@ import React, {useContext, useEffect, useId, useState} from 'react';
 import {useLocation} from 'react-router-dom'
 import Header from "../../components/Header/Header";
 import styles from "./BookDetails.module.scss"
-import {ReactComponent as Heart} from "../../images/favourites.svg";
+import {ReactComponent as HeartSvg} from "../../images/favourites.svg";
 import {Context} from "../../index";
 import Notification from "../../components/Notification/Notification";
 import {randomBytes} from "crypto";
+import {observer} from "mobx-react-lite";
+import {log} from "util";
 
 const BookDetails = () => {
+    const {store} = useContext(Context);
     const location = useLocation()
     const [showNotification, setShowNotification] = useState(false)
-    const {store} = useContext(Context);
     const {bookInfo} = location.state
     const thumbnail = (bookInfo.volumeInfo.imageLinks && bookInfo.volumeInfo.imageLinks.smallThumbnail) || '';
+    const [isFavourite, setIsFavourite] = useState(false)
+    const [timeOutId, setTimeoutId] = useState(null);
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
             store.checkAuth()
+                .then(() => {
+                    if (store.isAuth) {
+                        return store.findFavourite(store.getUser().id, bookInfo.id)
+                    }
+                })
+                .then((res) => {
+                setIsFavourite(res)
+            })
         }
     }, [])
-
-    const [timeOutId, setTimeoutId] = useState(null);
 
     useEffect(() => {
         if (timeOutId) {
@@ -33,8 +43,9 @@ const BookDetails = () => {
         }
     }, [showNotification])
     const addFavourite = (e) => {
+        setIsFavourite(!isFavourite)
         if (store.isAuth && store.user.isActivated) {
-            store.addFavourites(store.getUser().id, bookInfo.id)
+            store.changeFavouriteStatus(store.getUser().id, bookInfo.id)
         } else {
             if (timeOutId) {
                 clearTimeout(timeOutId);
@@ -45,33 +56,35 @@ const BookDetails = () => {
             }, 3000))
         }
     }
-
     const closeNotification = (e) => {
         setShowNotification(false)
     }
 
-    console.log(bookInfo)
+    if (store.isLoading) return <div>loading</div>
     return (
         <>
             <Notification message={'Необходимо авторизоваться'} show={showNotification}
                           closeNotification={closeNotification}></Notification>
             <Header/>
             <main className={styles.main}>
-                <div className={styles.buttonContainer} onClick={addFavourite}>
-                    <button className={styles.addToFav}>Добавить в избранное</button>
-                    <Heart className={styles.heart}></Heart>
-                </div>
+
                 <span className={styles.line}/>
                 <div className={styles.container}>
                     <img className={styles.img} src={thumbnail} alt={'Картинка кинги'}/>
                     <div className={styles.contentContainer}>
                         <div className={styles.bookInfo}>
-                            {
-                                bookInfo.volumeInfo.title ?
-                                    <p className={styles.bookTitle}>{bookInfo.volumeInfo.title}</p>
-                                    : <></>
-                            }
-
+                            <div className={styles.infoHeader}>
+                                {
+                                    bookInfo.volumeInfo.title ?
+                                        <p className={styles.bookTitle}>{bookInfo.volumeInfo.title}</p>
+                                        : <></>
+                                }
+                                <button className={styles.addToFavButton} onClick={addFavourite}>
+                                    Добавить в избранное
+                                    <span className={styles.favIcon}><HeartSvg
+                                        className={isFavourite ? styles.favSvgFill + " " + styles.favSvg : styles.favSvg}></HeartSvg></span>
+                                </button>
+                            </div>
                             {
                                 bookInfo.volumeInfo.authors.length !== 0 ?
                                     <p className={styles.authors}>
@@ -94,7 +107,7 @@ const BookDetails = () => {
                         <div className={styles.comments}>
                             <h3 className={styles.commentsTitle}>Отзывы 1</h3>
                             {
-                                store.isAuth && store.user?.isActivated 
+                                store.isAuth && store.user?.isActivated
                                     ? <textarea className={styles.commentsInput}/>
                                     : <p className={styles.notAuthMessage}>Авторизуйтесь, чтобы оставить комментарий</p>
                             }
@@ -107,4 +120,4 @@ const BookDetails = () => {
     );
 };
 
-export default BookDetails;
+export default observer(BookDetails);

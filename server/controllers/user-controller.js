@@ -80,7 +80,26 @@ class UserController {
         } catch (e) {
             next(e)
         }
+    }
 
+    async changeFavouriteStatus(req, res, next) {
+        try {
+            const {userID, bookID} = req.body;
+            const {user, isFavourites} = await userService.changeFavouriteStatus(userID, bookID)
+            const jsonUser = res.json(user)
+            return {jsonUser, isFavourites}
+        } catch (e) {
+            next(e)
+        }
+    }
+    async findFavourite(req, res, next) {
+        try {
+            const {userID, bookID} = req.body;
+            const result = await userService.findFavourite(userID, bookID)
+            return res.json(result)
+        } catch (e) {
+            next(e)
+        }
     }
 }
 
