@@ -2,6 +2,7 @@ import React from 'react';
 import './styles/global.scss';
 import './App.scss';
 import MainPage from "./pages/MainPage/MainPage";
+import {observer} from "mobx-react-lite";
 
 function App() {
     return (
@@ -11,4 +12,4 @@ function App() {
     );
 }
 
-export default App;
+export default observer(App);

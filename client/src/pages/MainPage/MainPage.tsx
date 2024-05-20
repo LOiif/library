@@ -4,6 +4,8 @@ import './MainPage.scss';
 import Carousel from "../../components/Carousel/Carousel";
 import axios from "axios";
 import MyCarousel from "../../components/Carousel/Carousel";
+import {observer} from "mobx-react-lite";
+import {GOOGLE_API_KEY} from "../../http";
 
 const MainPage = () => {
 
@@ -12,22 +14,21 @@ const MainPage = () => {
     const [newData, setNewData] = useState([]);
     const [bestData, setBestData] = useState([]);
     const [topData, setTopData] = useState([]);
-    const API_KEY = 'AIzaSyAoXUwvsCrGZhf31no8STdw9V5YDpwP0FE';
 
     const fetchData = uri => axios.get(uri).then(({data}) => data);
     useEffect(() => {
         Promise.all([
-            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Одноэтажная+Америка&key=${API_KEY}&maxResults=1&langRestrict=ru`),
-            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Война+и+мир+лев+толстой&key=${API_KEY}&maxResults=1&langRestrict=ru`),
-            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Тихий+дон&key=${API_KEY}&maxResults=1&langRestrict=ru`),
-            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Двенадцать+стульев&key=${API_KEY}&maxResults=1&langRestrict=ru`),
-            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Дюна&key=${API_KEY}&maxResults=1&langRestrict=ru`),
+            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Одноэтажная+Америка&key=${GOOGLE_API_KEY}&maxResults=1&langRestrict=ru`),
+            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Война+и+мир+лев+толстой&key=${GOOGLE_API_KEY}&maxResults=1&langRestrict=ru`),
+            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Тихий+дон&key=${GOOGLE_API_KEY}&maxResults=1&langRestrict=ru`),
+            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Двенадцать+стульев&key=${GOOGLE_API_KEY}&maxResults=1&langRestrict=ru`),
+            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Дюна&key=${GOOGLE_API_KEY}&maxResults=1&langRestrict=ru`),
         ]).then(([data1, data2, data3, data4, data5]) => {
             setMainData([...data1.items, ...data2.items, ...data3.items, ...data4.items, ...data5.items, ...data5.items, ...data5.items])
         }).catch((err) => console.log(err))
 
         Promise.all([
-            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Война+и+мир&key=${API_KEY}&maxResults=20&langRestrict=ru`),
+            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:Война+и+мир&key=${GOOGLE_API_KEY}&maxResults=20&langRestrict=ru`),
         ]).then(([data1]) => {
             setRecommendationsData(data1.items)
         }).catch((err) => console.log(err))
@@ -55,4 +56,4 @@ const MainPage = () => {
     );
 };
 
-export default MainPage;
+export default observer(MainPage);

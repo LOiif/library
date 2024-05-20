@@ -5,6 +5,7 @@ import axios from 'axios';
 import {AuthResponse} from "../models/response/AuthResponse";
 import {API_URL} from "../http";
 import UserService from "../services/UserService";
+import BookService from "../services/BookService";
 
 export default class Store {
     user = {} as IUser;
@@ -40,9 +41,10 @@ export default class Store {
         this.isLoading = bool;
     }
 
-    getUser () {
+    getUser() {
         return this.user;
     }
+
     async login(email: string, password: string) {
         try {
             const response = await AuthService.login(email, password);
@@ -97,6 +99,7 @@ export default class Store {
             this.setLoading(false);
         }
     }
+
     async addFavourites(userID: string, bookID: string) {
         try {
             const response = await UserService.addFavourites(userID, bookID);
@@ -123,6 +126,32 @@ export default class Store {
             return response.data
         } catch (e) {
             this.setRegistrationError(e.response?.data);
+            console.log(e.response?.data);
+        }
+    }
+
+    async postComment(userId: string, bookId: string, comment: string) {
+        try {
+            const response = await BookService.postComment(userId, bookId, comment);
+        } catch (e) {
+            console.log(e.response?.data);
+        }
+    }
+
+    async deleteComment(bookId: string, commentId: string) {
+        try {
+            const response = await BookService.deleteComment(bookId, commentId);
+            return response.data
+        } catch (e) {
+            console.log(e.response?.data);
+        }
+    }
+
+    async getComments(bookId: string) {
+        try {
+            const response = await BookService.getComments(bookId);
+            return response.data
+        } catch (e) {
             console.log(e.response?.data);
         }
     }

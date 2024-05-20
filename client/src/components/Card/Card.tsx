@@ -1,6 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
 import './Card.scss';
 import {Link} from "react-router-dom";
+import {observer} from "mobx-react-lite";
 
 const Card: FC<any> = ({bookInfo}) => {
     const [thumbnail, setThumbnail] = useState('')
@@ -24,4 +25,4 @@ const Card: FC<any> = ({bookInfo}) => {
     )
 };
 
-export default Card;
+export default observer(Card);

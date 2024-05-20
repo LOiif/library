@@ -5,6 +5,7 @@ import {ReactComponent as LeftArrowIcon} from "../../images/arrow_left.svg";
 import {ReactComponent as RightArrowIcon} from "../../images/arrow_right.svg";
 import Card from "../Card/Card";
 import Carousel from 'react-multi-carousel';
+import {observer} from "mobx-react-lite";
 
 const MyCarousel: FC<any> = ({items, title, size}) => {
     let itemClass = 'item';
@@ -80,4 +81,4 @@ const MyCarousel: FC<any> = ({items, title, size}) => {
     );
 };
 
-export default MyCarousel;
+export default observer(MyCarousel);
