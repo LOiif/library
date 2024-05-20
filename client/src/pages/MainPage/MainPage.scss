@@ -1,10 +1,23 @@
 @import "../../styles/variables.scss";
 
 .main {
-  padding: 60px 140px 0 140px;
-
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   min-height: calc(100vh - 65px);
   background-color: $main-background;
+  padding: 120px 10px 0 10px;
+
+  @media (min-width: 400px) {
+    padding: 120px 40px 0 40px;
+  }
+
+  @media (min-width: 600px) {
+    padding: 120px 80px 0 80px;
+  }
+  @media (min-width: 1200px) {
+    padding: 140px 140px 0 140px;
+  }
 }
 
 .mb {

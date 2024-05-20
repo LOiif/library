@@ -21,14 +21,14 @@ const MyCarousel: FC<any> = ({items, title, size}) => {
             itemClass += ' item--small'
             deskItems = 7;
             tabletItems = 4;
-            mobileItems = 2;
+            mobileItems = 3;
             break;
         case 2:
             buttonClass += ' button--big'
             itemClass += ' item--big'
             deskItems = 5;
-            tabletItems = 2;
-            mobileItems = 1;
+            tabletItems = 3;
+            mobileItems = 2;
             break;
     }
     const responsive = {
@@ -46,7 +46,7 @@ const MyCarousel: FC<any> = ({items, title, size}) => {
             items: tabletItems
         },
         mobile: {
-            breakpoint: {max: 464, min: 0},
+            breakpoint: {max: 600, min: 0},
             items: mobileItems
         }
     };

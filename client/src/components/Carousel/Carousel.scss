@@ -12,21 +12,38 @@
 }
 
 .item--small {
-  width: 140px;
-  min-height: 215px;
+  width: 104px;
+  min-height: 160px;
+
+  @media (min-width: 1200px) {
+    width: 140px;
+    min-height: 215px;
+  }
 }
 
 .item--small img {
-  height: 215px;
+  height: 160px;
+
+  @media (min-width: 1200px) {
+    height: 215px;
+  }
 }
 
 .item--big {
-  width: 210px;
-  min-height: 322px;
+  width: 140px;
+  min-height: 215px;
+  @media (min-width: 1200px) {
+    width: 210px;
+    min-height: 322px;
+  }
 }
 
 .item--big img {
-  height: 322px;
+  height: 215px;
+
+  @media (min-width: 1200px) {
+    height: 322px;
+  }
 }
 
 .item-link {

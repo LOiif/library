@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from "../../components/Header/Header";
 import './MainPage.scss';
-import Carousel from "../../components/Carousel/Carousel";
 import axios from "axios";
 import MyCarousel from "../../components/Carousel/Carousel";
 import {observer} from "mobx-react-lite";
