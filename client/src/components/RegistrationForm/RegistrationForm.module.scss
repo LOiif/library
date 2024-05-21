@@ -4,7 +4,8 @@
   padding: 50px 20px 40px 20px;
   border: 2px solid transparent;
   border-radius: 10px;
-  background-color: $dark-grey;
+  background-color: $main-background;
+  box-shadow: 0 0 10px 0 #e0e0e0;
 
   @media (min-width: 600px) {
     padding: 50px 60px 40px 60px;
@@ -72,13 +73,13 @@
 
   text-align: center;
 
-  color: $main-color;
+  color: $white-text-color;
   font-size: 24px;
   font-family: inherit;
 
   transition: opacity 0.3s;
 
-  background: $dark-purple;
+  background: $button-color;
 
   &:hover {
     opacity: 0.6;
@@ -98,7 +99,7 @@
 }
 
 .loginLink {
-  color: $light-purple;
+  color: $button-color;
   transition: opacity 0.2s;
   text-decoration: underline;
 
