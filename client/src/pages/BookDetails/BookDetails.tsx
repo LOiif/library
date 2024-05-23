@@ -114,7 +114,7 @@ const BookDetails = () => {
                     visible={true}
                     height="60"
                     width="60"
-                    color="#D8CCBF"
+                    color="#000000"
                     ariaLabel="страница загружается"
                     wrapperClass={styles.loaderWrapper}
                 />)

@@ -6,12 +6,19 @@ import {observer} from "mobx-react-lite";
 const Card: FC<any> = ({bookInfo}) => {
     const [thumbnail, setThumbnail] = useState('')
     useEffect(() => {
-        setThumbnail(bookInfo.volumeInfo.imageLinks && bookInfo.volumeInfo.imageLinks.smallThumbnail)
+        let img = bookInfo.volumeInfo?.imageLinks?.extraLarge
+            || bookInfo.volumeInfo?.imageLinks?.large
+            || bookInfo.volumeInfo?.imageLinks?.medium
+            || bookInfo.volumeInfo?.imageLinks?.small
+            || bookInfo.volumeInfo?.imageLinks?.thumbnail
+            || bookInfo.volumeInfo?.imageLinks?.smallThumbnail
+
+        setThumbnail(img)
     }, [bookInfo]);
 
     return (
         <>
-            <Link to={`book/${bookInfo.id}`} state={{bookInfo}} className={'card'}>
+            <Link to={`/book/${bookInfo.id}`} state={{bookInfo}} className={'card'}>
                 <img className={"img"} src={thumbnail != undefined ? thumbnail : ''}/>
                 <div className={"info"}>
                     {

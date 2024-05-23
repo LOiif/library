@@ -8,9 +8,8 @@ import {observer} from "mobx-react-lite";
 import {store} from "../../index";
 
 const Header = () => {
-    const [searchValue, setSearchValue] = useState('')
+    const [searchQuery, setSearchQuery] = useState('')
     const [focus, setFocus] = useState(false)
-    const navigate = useNavigate()
 
     const searchBlurHandler = (e) => {
         console.log(e.target)
@@ -29,21 +28,20 @@ const Header = () => {
             <div>
                 <nav className="nav">
                     <div className="nav-links">
-                        <Link to={`/`} className={'logo nav-link'}>easy-lab</Link>
+                        <Link to={`/`} className={'logo nav-link'}>easy-lib</Link>
                         <Link to={`/`} className={'nav-link'}>Главная</Link>
-                        <Link to={`/`} className={'nav-link'}>Каталог</Link>
+                        <Link to={`/catalog`} className={'nav-link'}>Каталог</Link>
                         <Link to={`/`} className={'nav-link'}>Топы</Link>
                     </div>
 
                     <div className="profile-links">
                         <div className="profile-nav-item profile-icon">
                             <input className={'search-input'}
-
                                    onFocus={searchFocusHandler}
                                    type="text"
                                    id="search"
-                                   onChange={(e) => setSearchValue(e.target.value)}
-                                   value={searchValue}
+                                   onChange={(e) => setSearchQuery(e.target.value)}
+                                   value={searchQuery}
                             />
                             <label className="search-label" htmlFor="search" onBlur={searchBlurHandler}>
 
@@ -51,9 +49,8 @@ const Header = () => {
                                     !focus ?
                                         <div onClick={searchClickHandler} className="icon icon-search"><SearchIcon/>
                                         </div>
-                                        : <Link to={`/catalog`} className={'icon icon-search'}><SearchIcon/></Link>
+                                        : <Link to={`/catalog`} className={'icon icon-search'} state={{searchQuery}}><SearchIcon/></Link>
                                 }
-
 
                                 Поиск книг
                             </label>
