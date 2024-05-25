@@ -35,7 +35,9 @@ const BookDetails = () => {
     }, [])
 
     useEffect(() => {
+
         if (bookInfo) {
+            store.addBook(bookInfo)
             store.getComments(bookInfo.id).then((res) => {
                 if (res) setComments(res)
             })

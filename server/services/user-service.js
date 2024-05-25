@@ -86,6 +86,14 @@ class UserService {
         return user
     }
 
+    async getFavouritesIds(userID) {
+        if (!userID) {
+            throw ApiError.UnauthorizedError();
+        }
+        const user = await UserModel.findById(userID);
+        return user.favourites
+    }
+
     async changeFavouriteStatus(userID, bookID) {
         if (!userID) {
             throw ApiError.UnauthorizedError();

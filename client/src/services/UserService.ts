@@ -17,5 +17,9 @@ export default class UserService {
     static async findFavourite(userID: string, bookID: string): Promise<AxiosResponse> {
         return $api.post('/find-favourite', {userID, bookID})
     }
+
+    static async getFavourites(userID: string): Promise<AxiosResponse> {
+        return $api.put('/get-favourites', {userID})
+    }
 }
 

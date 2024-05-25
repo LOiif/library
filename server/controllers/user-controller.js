@@ -1,4 +1,5 @@
 const userService = require('../services/user-service')
+const bookService = require('../services/book-service')
 const {validationResult} = require('express-validator')
 const ApiError = require('../exceptions/api-error')
 
@@ -82,6 +83,16 @@ class UserController {
         }
     }
 
+    async getFavourites(req, res, next) {
+        try {
+            const {userID} = req.body;
+            const favouritesIds = await userService.getFavouritesIds(userID)
+            const favourites = await bookService.getBooksByIds(favouritesIds)
+            return res.json(favourites.filter(el => el !== null))
+        } catch (e) {
+            next(e)
+        }
+    }
     async changeFavouriteStatus(req, res, next) {
         try {
             const {userID, bookID} = req.body;

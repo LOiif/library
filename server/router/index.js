@@ -21,5 +21,6 @@ router.get('/activate/:link', userController.activate)
 router.get('/refresh', userController.refresh)
 router.get('/users', userController.getUsers)
 router.get('/get-all-books', bookController.getAllBooks)
+router.put('/get-favourites', userController.getFavourites)
 
 module.exports = router

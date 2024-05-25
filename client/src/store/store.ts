@@ -164,6 +164,15 @@ export default class Store {
         }
     }
 
+    async getFavourites(userID){
+        try {
+            const response = await UserService.getFavourites(userID);
+            return response.data
+        } catch (e) {
+            console.log(e.response?.data);
+        }
+    }
+
     async addBook(bookData){
         try {
             const response = await BookService.addBook(bookData);

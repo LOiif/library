@@ -69,13 +69,13 @@ const Header = () => {
                         </div>
                                 : <></>
                         }
-                        <a className="profile-nav-item profile-icon" href="src/components">
+                        <Link to={'/profile'} state={{displayed: 'favourites'}} className="profile-nav-item profile-icon">
                             <i className="icon icon-favourites"><FavouritesIcon/></i>
                             Избранное
-                        </a>
+                        </Link>
                         {
                             store.isAuth
-                                ? <Link to={'/login'} className="profile-nav-item profile-icon">
+                                ? <Link to={'/profile'} state={{displayed: 'mainInfo'}} className="profile-nav-item profile-icon">
                                     <i className="icon icon-profile"><ProfileIcon/></i>
                                     Профиль
                                 </Link>

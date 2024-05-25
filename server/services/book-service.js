@@ -49,6 +49,16 @@ class BookService {
         return books
     }
 
+    async getBooksByIds(ids) {
+        let books = []
+        for(let i = 0; i < ids.length; i++){
+            let book = await BookDataModel.findOne({id: ids[i]})
+            books.push(book)
+        }
+
+        return books
+    }
+
     async addBook(bookData) {
         let book = await BookDataModel.findOne({id: bookData.id})
 
