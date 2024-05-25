@@ -15,8 +15,20 @@ const CatalogPage: FC<any> = () => {
     const [isLoading, setIsLoading] = useState(false);
     let maxResults = inputSearchQuery === '' ? 40 : 27
 
+    const fetchData = uri => axios.get(uri).then(({data}) => data);
+
+    useEffect(() => {
+        setIsLoading(true)
+        Promise.all([
+            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:${inputSearchQuery}&key=${GOOGLE_API_KEY}&maxResults=${maxResults}&langRestrict=ru`),
+        ]).then(([data1]) => {
+            console.log(data1.items)
+            setBooksData(data1.items)
+            setIsLoading(false)
+        }).catch((err) => console.log(err))
+
+    }, [])
     const clickSearchButton = (e) => {
-        console.log(inputSearchQuery)
         setIsLoading(true)
         Promise.all([
             fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:${inputSearchQuery}&key=${GOOGLE_API_KEY}&maxResults=${maxResults}&langRestrict=ru`),
@@ -36,20 +48,6 @@ const CatalogPage: FC<any> = () => {
             clickSearchButton(event)
         }
     };
-
-    const fetchData = uri => axios.get(uri).then(({data}) => data);
-
-    useEffect(() => {
-        setIsLoading(true)
-        Promise.all([
-            fetchData(`https://www.googleapis.com/books/v1/volumes?q=intitle:${inputSearchQuery}&key=${GOOGLE_API_KEY}&maxResults=${maxResults}&langRestrict=ru`),
-        ]).then(([data1]) => {
-            console.log(data1.items)
-            setBooksData(data1.items)
-            setIsLoading(false)
-        }).catch((err) => console.log(err))
-
-    }, [])
 
     if (isLoading) {
         return <>

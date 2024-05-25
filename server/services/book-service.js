@@ -1,4 +1,5 @@
 const BookModel = require('../models/book-model');
+const BookDataModel = require('../models/book-data-model');
 const ApiError = require("../exceptions/api-error");
 const bcrypt = require("bcrypt");
 const uuid = require("uuid");
@@ -6,6 +7,7 @@ const mailService = require("./mail-service");
 const UserDto = require("../dtos/user-dto");
 const tokenService = require("./token-service");
 const UserModel = require("../models/user-model");
+const {resolveAny} = require("dns");
 
 class BookService {
     async postComment(userId, bookId, comment) {
@@ -37,6 +39,25 @@ class BookService {
         }
 
         return book.comments
+    }
+
+    async getAllBooks() {
+        const books = await BookDataModel.find()
+        if (!books) {
+            throw ApiError.BadRequest(`Такая книга уже есть`)
+        }
+        return books
+    }
+
+    async addBook(bookData) {
+        let book = await BookDataModel.findOne({id: bookData.id})
+
+        if (book) {
+            throw ApiError.BadRequest(`Такая книга уже есть`)
+        }
+        book = await BookDataModel.create(bookData)
+
+        return book
     }
 }
 

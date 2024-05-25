@@ -155,4 +155,21 @@ export default class Store {
             console.log(e.response?.data);
         }
     }
+    async getAllBooks(){
+        try {
+            const response = await BookService.getAllBooks();
+            return response.data
+        } catch (e) {
+            console.log(e.response?.data);
+        }
+    }
+
+    async addBook(bookData){
+        try {
+            const response = await BookService.addBook(bookData);
+            return response.data
+        } catch (e) {
+            console.log(e.response?.data);
+        }
+    }
 }

@@ -18,6 +18,12 @@ export default class BookService {
 
     static async getBookById(bookId: string): Promise<any> {
         return axios.get((`https://www.googleapis.com/books/v1/volumes/${bookId}?key=${GOOGLE_API_KEY}`)).then(({data}) => data)
+    }
 
+    static async addBook(bookData): Promise<any> {
+        return $api.post('/add-book', {bookData})
+    }
+    static async getAllBooks(): Promise<AxiosResponse> {
+        return $api.get('/get-all-books')
     }
 }

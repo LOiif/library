@@ -53,11 +53,17 @@
 .favSvg {
   width: 100%;
   height: 100%;
+
   transition: fill 1s;
+
+  & path{
+    stroke: $main-color;
+  }
 }
 
 .favSvgFill {
   & path {
+
     fill: $main-color;
   }
 }

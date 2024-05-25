@@ -30,6 +30,25 @@ class BookController {
             next(e)
         }
     }
+
+    async getAllBooks(req, res, next) {
+        try {
+            const data = await bookService.getAllBooks();
+            return res.json(data);
+        } catch (e) {
+            next(e)
+        }
+    }
+
+    async addBook(req, res, next) {
+        try {
+            const {bookData} = req.body;
+            const data = await bookService.addBook(bookData);
+            return res.json(data);
+        } catch (e) {
+            next(e)
+        }
+    }
 }
 
 module.exports = new BookController()

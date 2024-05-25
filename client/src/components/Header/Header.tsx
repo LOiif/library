@@ -3,13 +3,15 @@ import './Header.scss';
 import {ReactComponent as FavouritesIcon} from "../../images/favourites.svg";
 import {ReactComponent as ProfileIcon} from "../../images/profile.svg";
 import {ReactComponent as SearchIcon} from "../../images/search.svg";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import {store} from "../../index";
 
 const Header = () => {
     const [searchQuery, setSearchQuery] = useState('')
     const [focus, setFocus] = useState(false)
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const searchBlurHandler = (e) => {
         console.log(e.target)
@@ -22,6 +24,12 @@ const Header = () => {
         console.log(focus)
         // setFocus(true)
     }
+    const handleKeyPress = (event) => {
+        console.log(location.pathname)
+        if (event.key === 'Enter') {
+            navigate("/catalog", {state: {searchQuery}})
+        }
+    };
 
     return (
         <header className="header">
@@ -35,9 +43,13 @@ const Header = () => {
                     </div>
 
                     <div className="profile-links">
+
+                        {
+                            location.pathname !== "/catalog" ?
                         <div className="profile-nav-item profile-icon">
                             <input className={'search-input'}
                                    onFocus={searchFocusHandler}
+                                   onKeyUp={handleKeyPress}
                                    type="text"
                                    id="search"
                                    onChange={(e) => setSearchQuery(e.target.value)}
@@ -55,6 +67,8 @@ const Header = () => {
                                 Поиск книг
                             </label>
                         </div>
+                                : <></>
+                        }
                         <a className="profile-nav-item profile-icon" href="src/components">
                             <i className="icon icon-favourites"><FavouritesIcon/></i>
                             Избранное
@@ -67,7 +81,6 @@ const Header = () => {
                                 </Link>
                                 : <Link to={`/login`} className={'profile-nav-item login-button'}>Войти</Link>
                         }
-
 
                     </div>
                 </nav>

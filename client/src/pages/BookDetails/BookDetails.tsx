@@ -133,7 +133,7 @@ const BookDetails = () => {
                 <div className={styles.container}>
                     <div>
                         <img className={styles.img} src={thumbnail} alt={'Картинка кинги'}/>
-                        <a href={bookInfo?.saleInfo?.buyLink} target={"_blank"} className={styles.readLink}>Читать</a>
+                        <a href={bookInfo?.volumeInfo?.previewLink} target={"_blank"} className={styles.readLink}>Читать</a>
                     </div>
                     <div className={styles.contentContainer}>
                         <div className={styles.bookInfo}>

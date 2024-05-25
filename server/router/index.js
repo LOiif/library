@@ -11,6 +11,7 @@ router.post('/registration',
 router.post('/login', userController.login)
 router.post('/logout', userController.logout)
 router.post('/add-favourites', userController.addFavourites)
+router.post('/add-book', bookController.addBook)
 router.post('/find-favourite', userController.findFavourite)
 router.post('/change-favourite-status', userController.changeFavouriteStatus)
 router.post('/post-comment', bookController.postComment)
@@ -19,5 +20,6 @@ router.post('/delete-comment', bookController.deleteComment)
 router.get('/activate/:link', userController.activate)
 router.get('/refresh', userController.refresh)
 router.get('/users', userController.getUsers)
+router.get('/get-all-books', bookController.getAllBooks)
 
 module.exports = router

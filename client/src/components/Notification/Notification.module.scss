@@ -7,12 +7,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 12px 8px;
+  padding: 8px 20px;
   bottom: 20px;
   border-radius: 2px;
   right: 20px;
-  background-color: #7e1d1d;
-  color: $main-color;
+  background-color: $danger;
+  color: $white-text-color;
   animation: fade 0.45s ease forwards;
 }
 

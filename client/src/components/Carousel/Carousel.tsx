@@ -72,8 +72,8 @@ const MyCarousel: FC<any> = ({items, title, size}) => {
                       </button>}
             >
                 {
-                    items.map((item) => <div key={item.id} className={itemClass}>
-                        <Card bookInfo={item}/>
+                    items.map((item) => <div key={item.id} className="item_content">
+                            <Card bookInfo={item}/>
                     </div>)
                 }
             </Carousel>
