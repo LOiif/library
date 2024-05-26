@@ -6,6 +6,7 @@ import {AuthResponse} from "../models/response/AuthResponse";
 import {API_URL} from "../http";
 import UserService from "../services/UserService";
 import BookService from "../services/BookService";
+import FileService from "../services/FileService";
 
 export default class Store {
     user = {} as IUser;
@@ -179,6 +180,15 @@ export default class Store {
             return response.data
         } catch (e) {
             console.log(e.response?.data);
+        }
+    }
+
+    async downloadFile(filename) {
+        try {
+            const response = await FileService.downloadFile(filename);
+            return response
+        } catch (e) {
+            console.log(e);
         }
     }
 }

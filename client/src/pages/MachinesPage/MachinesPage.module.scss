@@ -1,0 +1,24 @@
+@import "../../styles/variables.scss";
+
+.main {
+  padding: 220px 120px;
+}
+
+.download {
+  font-size: 20px;
+  border: none;
+  background-color: $main-background;
+  color: black;
+  width: max-content;
+  text-align: center;
+
+  cursor: pointer;
+  margin: auto auto;
+  margin-bottom: 40px;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}

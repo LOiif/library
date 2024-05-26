@@ -1,6 +1,7 @@
 const Router = require('express').Router;
 const userController = require('../controllers/user-controller')
 const bookController = require('../controllers/book-controller')
+const fileController = require('../controllers/file-controller')
 const router = new Router();
 const {body} = require('express-validator')
 
@@ -21,6 +22,7 @@ router.get('/activate/:link', userController.activate)
 router.get('/refresh', userController.refresh)
 router.get('/users', userController.getUsers)
 router.get('/get-all-books', bookController.getAllBooks)
+router.get('/download/:filename', fileController.downloadFile)
 router.put('/get-favourites', userController.getFavourites)
 
 module.exports = router
