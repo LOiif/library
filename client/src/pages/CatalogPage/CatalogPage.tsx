@@ -7,6 +7,7 @@ import Card from "../../components/Card/Card";
 import {Triangle} from "react-loader-spinner";
 import {useLocation} from "react-router-dom";
 import {ReactComponent as RightArrowSvg} from "../../images/arrow_right.svg";
+import {observer} from "mobx-react-lite";
 
 const CatalogPage: FC<any> = () => {
     const location = useLocation()
@@ -100,4 +101,4 @@ const CatalogPage: FC<any> = () => {
     );
 };
 
-export default CatalogPage;
+export default observer(CatalogPage);

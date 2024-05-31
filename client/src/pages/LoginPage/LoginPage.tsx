@@ -6,6 +6,7 @@ import {IUser} from "../../models/IUser";
 import Header from "../../components/Header/Header";
 import styles from "./LoginPage.module.scss";
 import {useNavigate} from "react-router-dom";
+import {Triangle} from "react-loader-spinner";
 
 const LoginPage: FC = () => {
     const {store} = useContext(Context);
@@ -19,7 +20,19 @@ const LoginPage: FC = () => {
     }, [])
 
     if (store.isLoading) {
-        return <div>Загрузка...</div>
+        return (
+            <>
+            <Header/>
+            <main className={styles.main}>
+                <Triangle visible={true}
+                          height="60"
+                          width="60"
+                          color="#000000"
+                          ariaLabel="страница загружается"
+                          wrapperClass={styles.loaderWrapper}/>
+            </main>
+        </>
+        );
     }
 
     if (!store.isAuth) {

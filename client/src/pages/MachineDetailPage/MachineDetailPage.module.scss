@@ -1,0 +1,54 @@
+@import "../../styles/variables.scss";
+
+.main {
+  padding: 180px 20px;
+
+  @media (min-width: 600px) {
+    padding: 180px 40px;
+  }
+
+  @media (min-width: 1000px) {
+    padding: 180px 120px;
+  }
+
+  @media (min-width: 1500px) {
+    padding: 180px 300px;
+  }
+
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.imgContainer {
+  width: max-content;
+  padding: 40px;
+  margin-bottom: 60px;
+  border: 1px solid grey;
+}
+
+.imgContainer img{
+  width: 200px;
+  height: 150px;
+
+  @media (min-width: 600px) {
+    width: 400px;
+    height: 300px;
+  }
+}
+
+.description {
+  margin-bottom: 40px;
+}
+
+.download {
+  font-size: 18px;
+  border: none;
+  background-color: $main-background;
+  color: $button-color;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+}

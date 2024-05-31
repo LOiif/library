@@ -73,8 +73,9 @@ const ProfilePage = () => {
 
     }, [displayedBlock, isLoading, favouritesBooks])
     const logoutClickHandler = (e) => {
-        store.logout()
-        navigate("/login")
+        store.logout().then(() => {
+            navigate("/login")
+        })
     }
 
     if (!store.isAuth) return (

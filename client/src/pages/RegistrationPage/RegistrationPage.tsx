@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import styles from "./RegistrationPage.module.scss";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 import {useNavigate} from "react-router-dom";
+import {Triangle} from "react-loader-spinner";
 
 const RegistrationPage: FC = () => {
     const {store} = useContext(Context);
@@ -19,7 +20,19 @@ const RegistrationPage: FC = () => {
     }, [])
 
     if (store.isLoading) {
-        return <div>Загрузка...</div>
+        return (
+            <>
+                <Header/>
+                <main className={styles.main}>
+                    <Triangle visible={true}
+                              height="60"
+                              width="60"
+                              color="#000000"
+                              ariaLabel="страница загружается"
+                              wrapperClass={styles.loaderWrapper}/>
+                </main>
+            </>
+        );
     }
 
     if (!store.isAuth) {

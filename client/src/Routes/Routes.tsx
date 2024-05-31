@@ -7,6 +7,7 @@ import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
 import CatalogPage from "../pages/CatalogPage/CatalogPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import MachinesPage from "../pages/MachinesPage/MachinesPage";
+import MachineDetailPage from "../pages/MachineDetailPage/MachineDetailPage";
 
 export const router = createBrowserRouter([
         {path: '/', element: <App/>},
@@ -17,5 +18,6 @@ export const router = createBrowserRouter([
         {path: 'login', element: <LoginPage/>},
         {path: 'profile', element: <ProfilePage/>},
         {path: 'machines', element: <MachinesPage/>},
+        {path: 'machines/:doc', element: <MachineDetailPage/>},
     ]
 )
