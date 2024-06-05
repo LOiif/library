@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const path = require('path');
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
@@ -14,7 +15,8 @@ app.use(cors({
     credentials: true,
     origin: process.env.CLIENT_URL
 }));
-app.use(express.static('public'))
+
+app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/api', router)
 app.use(errorMiddleware)
 

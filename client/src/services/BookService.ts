@@ -26,4 +26,7 @@ export default class BookService {
     static async getAllBooks(): Promise<AxiosResponse> {
         return $api.get('/get-all-books')
     }
+    static async getBooksUploadsByUserId(userId): Promise<AxiosResponse> {
+        return $api.get(`/get-books-uploads-by-userid/${userId}`, )
+    }
 }

@@ -1,0 +1,175 @@
+@import "../../styles/variables";
+
+.container {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 0;
+  min-height: 100vh;
+  height: max-content;
+  background-color: rgba(1, 1, 5, 0.3);
+  padding: 2% 25%;
+  font-family: $main-font;
+}
+
+.content {
+  position: relative;
+  background-color: $main-background;
+  padding: 60px 60px 60px 60px;
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 26px;
+  font-family: $main-font;
+  margin-bottom: 60px;
+}
+
+.close {
+  position: absolute;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+  background-color: $main-background;
+  right: 20px;
+  top: 20px;
+
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.4;
+  }
+
+  & svg path {
+    fill: $danger;
+  }
+}
+
+.uploadButton {
+  display: inline-block;
+  border: none;
+  border-radius: 2px;
+  background-color: $button-color;
+  color: $white-text-color;
+  padding: 12px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 50px;
+}
+
+.fileInput {
+  display: none;
+}
+
+.customFileInput {
+  margin-top: 15px;
+  display: inline-block;
+  border: 1px solid $button-color;
+  background-color: $main-background;
+  color: $button-color;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.blocksChangersContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.blockChanger {
+  position: relative;
+  color: $main-color;
+  cursor: pointer;
+
+  transition: color 0.2s ease-in-out;
+
+  &:after {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    display: block;
+    content: '';
+    background-color: $button-color;
+    left: -8px;
+    right: -8px;
+    height: 2px;
+    bottom: -8px;
+  }
+
+  &:not(:last-of-type) {
+    margin-right: 40px;
+  }
+}
+
+.blockChangerActive {
+  color: $button-color;
+
+  &:after {
+    opacity: 1;
+  }
+}
+
+.blockContent {
+  padding-top: 40px;
+}
+
+.descriptionArea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border: none;
+  background-color: $main-background;
+  border-radius: 4px;
+  font-family: $main-font;
+  font-size: 18px;
+  color: $main-color;
+  box-shadow: 0 0 2px 0 #949494;
+  margin-top: 10px;
+
+  &:focus {
+    outline: 1px solid $button-color;
+    border-radius: 4px;
+  }
+}
+
+.titleInput {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background-color: $main-background;
+  border-radius: 2px;
+  font-family: $main-font;
+  font-size: 16px;
+  color: $main-color;
+  box-shadow: 0 0 2px 0 #949494;
+  margin-top: 10px;
+
+  &:focus {
+    outline: 1px solid $button-color;
+    border-radius: 4px;
+  }
+}
+
+.item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.error {
+  position: absolute;
+  color: $danger;
+  font-size: 14px;
+  margin-top: 5px;
+}

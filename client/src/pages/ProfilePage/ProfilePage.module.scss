@@ -149,6 +149,17 @@
   }
 }
 
+.uploadButton {
+  border: none;
+  border-radius: 2px;
+  background-color: $button-color;
+  padding: 12px 25px;
+  color: $white-text-color;
+  font-size: 18px;
+  font-family: $main-font;
+}
+
+
 .loaderWrapper {
   padding-top: 80px;
   margin: auto auto;

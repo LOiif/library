@@ -7,7 +7,9 @@ const BookDataSchema = new Schema({
     selfLink: {type: String},
     volumeInfo: {type: Object},
     saleInfo: {type: Object},
-    accessInfo: {type: Object}
+    accessInfo: {type: Object},
+    uploadUserId: {type: String}
+
 })
 
 module.exports = model('BookData', BookDataSchema)

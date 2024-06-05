@@ -55,7 +55,11 @@ class BookService {
             let book = await BookDataModel.findOne({id: ids[i]})
             books.push(book)
         }
+        return books
+    }
+    async getBooksUploadsByUserId(userId) {
 
+        let books = await BookDataModel.find({uploadUserId: userId})
         return books
     }
 

@@ -40,6 +40,17 @@ class BookController {
         }
     }
 
+    async getBooksUploadsByUserId(req, res, next) {
+        try {
+            console.log(req.params)
+            const userId = req.params.userId
+            const data = await bookService.getBooksUploadsByUserId(userId);
+            return res.json(data);
+        } catch (e) {
+            next(e)
+        }
+    }
+
     async addBook(req, res, next) {
         try {
             const {bookData} = req.body;

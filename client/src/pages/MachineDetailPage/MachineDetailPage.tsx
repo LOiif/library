@@ -35,13 +35,13 @@ const MachineDetailPage = () => {
 
                 <h1 className={styles.title}>{doc.title}</h1>
                 <div className={styles.imgContainer}>
-                    <img src={`/images/machines/${doc.img}.jpg`} alt={doc.title}/>
+                    <img src={doc.img} alt={doc.title}/>
                 </div>
                 <p className={styles.description}>{doc.description}</p>
                 {
                     store.isAuth && store.getUser()?.isActivated
                         ? <button onClick={downloadPDF} id={doc.pdf}
-                                 className={styles.download}>{`Скачать техническую документацию для ${doc.pdf}`}
+                                 className={styles.download}>{`Скачать техническую документацию для ${doc.title}`}
                         </button>
                         : <></>
                 }

@@ -17,6 +17,11 @@ const MainPage = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        if (localStorage.getItem('token')) {
+            setIsLoading(true)
+            store.checkAuth()
+        }
+
         setIsLoading(true)
         store.getAllBooks().then((data) => {
             setRandomBookData(data.sort(() => Math.random() - 0.5))

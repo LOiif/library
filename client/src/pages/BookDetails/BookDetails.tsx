@@ -135,7 +135,8 @@ const BookDetails = () => {
                 <div className={styles.container}>
                     <div>
                         <img className={styles.img} src={thumbnail} alt={'Картинка кинги'}/>
-                        <a href={bookInfo?.volumeInfo?.previewLink} target={"_blank"} className={styles.readLink}>Читать</a>
+                        <a href={bookInfo?.volumeInfo?.previewLink} target={"_blank"}
+                           className={styles.readLink}>Читать</a>
                     </div>
                     <div className={styles.contentContainer}>
                         <div className={styles.bookInfo}>
@@ -190,23 +191,21 @@ const BookDetails = () => {
                             }
 
                             {
-                                store.isAuth
-                                    ? comments.map((item) =>
-                                        <div key={item.commentId} id={item.commentId}
-                                             className={item.userId === store.getUser().id
-                                                 ? styles.commentContainer + ' ' + styles.currentCommentContainer
-                                                 : styles.commentContainer}
+                                comments.map((item) =>
+                                    <div key={item.commentId} id={item.commentId}
+                                         className={item.userId === store.getUser().id
+                                             ? styles.commentContainer + ' ' + styles.currentCommentContainer
+                                             : styles.commentContainer}
+                                    >
+                                        <p className={styles.commentsUserId}>{`@` + item.userId}</p>
+                                        <p className={styles.comment}>{item.comment}</p>
+                                        <button className={styles.deleteComment}
+                                                onClick={deleteComment}
+                                                style={{backgroundImage: `url(${deleteIcon})`}}
                                         >
-                                            <p className={styles.commentsUserId}>{`@` + item.userId}</p>
-                                            <p className={styles.comment}>{item.comment}</p>
-                                            <button className={styles.deleteComment}
-                                                    onClick={deleteComment}
-                                                    style={{backgroundImage: `url(${deleteIcon})`}}
-                                            >
-                                                Удалить
-                                            </button>
-                                        </div>)
-                                    : <></>
+                                            Удалить
+                                        </button>
+                                    </div>)
                             }
                         </div>
                     </div>

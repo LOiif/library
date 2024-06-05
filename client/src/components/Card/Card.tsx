@@ -12,7 +12,6 @@ const Card: FC<any> = ({bookInfo}) => {
             || bookInfo.volumeInfo?.imageLinks?.small
             || bookInfo.volumeInfo?.imageLinks?.thumbnail
             || bookInfo.volumeInfo?.imageLinks?.smallThumbnail
-
         setThumbnail(img)
     }, [bookInfo]);
 
