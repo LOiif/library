@@ -3,12 +3,14 @@ import {useLocation} from 'react-router-dom'
 import Header from "../../components/Header/Header";
 import styles from "./BookDetails.module.scss"
 import {ReactComponent as HeartSvg} from "../../images/favourites.svg";
+import {ReactComponent as StarSvg} from "../../images/star.svg";
 import deleteIcon from "../../images/deleteIcon.svg";
 import {Context} from "../../index";
 import Notification from "../../components/Notification/Notification";
 import {observer} from "mobx-react-lite";
 import BookService from "../../services/BookService";
 import {Triangle} from "react-loader-spinner";
+import RatingModal from "../../components/RatingModal/RatingModal";
 
 const BookDetails = () => {
     const {store} = useContext(Context);
@@ -21,14 +23,32 @@ const BookDetails = () => {
     const [commentMessage, setCommentMessage] = useState('');
     const [showSendButton, setShowSendButton] = useState(false)
     const [comments, setComments] = useState([])
+    const [showRatingModal, setShowRatingModal] = useState(false)
+    const [rating, setRating] = useState([])
 
     useEffect(() => {
-        console.log(location)
         if (!bookInfo) {
             const bookId = location.pathname.split('/').reverse()[0]
             BookService.getBookById(bookId).then((data1) => {
                 console.log(data1)
                 setBookInfo(data1)
+
+            }).catch((err) => console.log(err))
+            BookService.getRatingBook(bookId).then((data) => {
+                const ratings = [];
+                for (let i = 0; i < data.data.length; i++) {
+                    ratings.push(data.data[i].rating)
+                }
+                setRating(ratings)
+
+            }).catch((err) => console.log(err))
+        } else {
+            BookService.getRatingBook(bookInfo.id).then((data) => {
+                const ratings = [];
+                for (let i = 0; i < data.data.length; i++) {
+                    ratings.push(data.data[i].rating)
+                }
+                setRating(ratings)
             }).catch((err) => console.log(err))
         }
 
@@ -48,7 +68,6 @@ const BookDetails = () => {
                         if (store.isAuth) {
                             store.findFavourite(store.getUser().id, bookInfo.id).then((res) => {
                                 setIsFavourite(res)
-                                console.log(store)
                             })
                         }
                     })
@@ -70,6 +89,25 @@ const BookDetails = () => {
     useEffect(() => {
         setShowSendButton(commentMessage !== '')
     }, [commentMessage])
+
+    const ratingClickHandler = (e) => {
+        setShowRatingModal(true)
+    }
+
+    const updateRating = () => {
+        let bookId = bookInfo.id || location.pathname.split('/').reverse()[0]
+
+        BookService.getRatingBook(bookId).then((data) => {
+            const ratings = [];
+            for (let i = 0; i < data.data.length; i++) {
+                ratings.push(data.data[i].rating)
+            }
+            setRating(ratings)
+        }).catch((err) => console.log(err))
+    }
+    const closeModal = () => {
+        setShowRatingModal(false)
+    }
 
     const commentMessageHandler = (e) => {
         setCommentMessage(e.target.value)
@@ -127,16 +165,37 @@ const BookDetails = () => {
     return (
         <>
             <Notification message={'Необходимо авторизоваться'} show={showNotification}
-                          closeNotification={closeNotification}></Notification>
+                          closeNotification={closeNotification}/>
+            <RatingModal showModal={showRatingModal}
+                         closeModal={closeModal}
+                         userId={store.getUser().id}
+                         bookId={bookInfo.id}
+                         updateRating={updateRating}
+            />
             <Header/>
             <main className={styles.main}>
-
-                <span className={styles.line}/>
                 <div className={styles.container}>
                     <div>
                         <img className={styles.img} src={thumbnail} alt={'Картинка кинги'}/>
+                        <div className={styles.ratingContainer} onClick={ratingClickHandler}>
+                            <div className={styles.svgContainer}>
+                                <p className={styles.rating}>
+                                    {
+                                        isNaN(Number((rating.reduce((acc, el) => acc + el, 0) / rating.length).toFixed(2)))
+                                            ? 0
+                                            : (rating.reduce((acc, el) => acc + el, 0) / rating.length).toFixed(2)
+                                    }
+                                </p>
+                                <StarSvg className={styles.ratingSvg} width={18} height={18}/>
+                            </div>
+                            <p className={styles.ratingButton}>Оценить</p>
+                        </div>
+
                         <a href={bookInfo?.volumeInfo?.previewLink} target={"_blank"}
-                           className={styles.readLink}>Читать</a>
+                           className={styles.readLink}>
+                            Читать
+                        </a>
+
                     </div>
                     <div className={styles.contentContainer}>
                         <div className={styles.bookInfo}>

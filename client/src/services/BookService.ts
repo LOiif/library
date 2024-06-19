@@ -20,6 +20,10 @@ export default class BookService {
         return axios.get((`https://www.googleapis.com/books/v1/volumes/${bookId}?key=${GOOGLE_API_KEY}`)).then(({data}) => data)
     }
 
+    static async ratingBook(userId, bookId, rating): Promise<any> {
+        return $api.post('/rating-book', {userId, bookId, rating})
+    }
+
     static async addBook(bookData): Promise<any> {
         return $api.post('/add-book', {bookData})
     }
@@ -28,5 +32,9 @@ export default class BookService {
     }
     static async getBooksUploadsByUserId(userId): Promise<AxiosResponse> {
         return $api.get(`/get-books-uploads-by-userid/${userId}`, )
+    }
+
+    static async getRatingBook(bookId): Promise<any> {
+        return $api.get(`/get-rating-book/${bookId}`, )
     }
 }

@@ -1,0 +1,110 @@
+@import "../../styles/variables";
+
+.container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 0;
+  min-height: 100vh;
+  height: max-content;
+  background-color: rgba(1, 1, 5, 0.3);
+  padding: 15% 20px;
+  font-family: $main-font;
+}
+
+.content {
+  position: relative;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  background-color: $main-background;
+  padding: 40px 40px 40px 40px;
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-family: $main-font;
+  margin-bottom: 30px;
+  margin-right: 120px;
+}
+
+.close {
+  position: absolute;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+  background-color: $main-background;
+  right: 20px;
+  top: 20px;
+
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.4;
+  }
+
+  & svg path {
+    fill: $danger;
+  }
+}
+
+.ratingList {
+  list-style: none;
+}
+
+.ratingItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 0 10px 15px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #eeeeee;
+  }
+}
+
+.ratingItemActive {
+  background-color: #eeeeee;
+}
+
+.rating {
+  margin-right: 5px;
+}
+
+.ratingSvg {
+  margin-right: 5px;
+}
+
+.ratingButton {
+  width: max-content;
+  background-color: $button-color;
+  color: $white-text-color;
+  border: none;
+  border-radius: 2px;
+  padding: 12px 25px;
+  font-family: $main-font;
+  font-size: 18px;
+  margin-top: 20px;
+  align-self: end;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}

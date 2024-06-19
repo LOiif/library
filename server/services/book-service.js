@@ -31,6 +31,30 @@ class BookService {
         return book.comments
     }
 
+    async ratingBook(userId, bookId, rating) {
+        let book = await BookModel.findOne({bookId})
+
+        if (!book) {
+            book = await BookModel.create({bookId: bookId, comments: [], likes: 0, rating: []})
+        }
+        book.rating = book.rating.filter((el) => el.userId !== userId)
+        console.log(book.rating)
+        book.rating.push({userId, rating})
+        book.save()
+        return book
+    }
+
+    async getRatingBook(bookId) {
+        console.log(bookId)
+        let book = await BookModel.findOne({bookId})
+
+        if (!book) {
+            throw ApiError.BadRequest(`Такой книги нет`)
+        }
+
+        return book.rating
+    }
+
     async getComments(bookId) {
         const book = await BookModel.findOne({bookId})
 

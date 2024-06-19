@@ -51,6 +51,26 @@ class BookController {
         }
     }
 
+    async ratingBook(req, res, next) {
+        try {
+            const {userId, bookId, rating} = req.body;
+            const book = await bookService.ratingBook(userId, bookId, rating)
+            return res.json(book)
+        } catch (e) {
+            next(e)
+        }
+    }
+
+    async getRatingBook(req, res, next) {
+        try {
+            const bookId = req.params.bookId
+            const data = await bookService.getRatingBook(bookId);
+            return res.json(data);
+        } catch (e) {
+            next(e)
+        }
+    }
+
     async addBook(req, res, next) {
         try {
             const {bookData} = req.body;
