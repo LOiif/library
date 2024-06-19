@@ -9,7 +9,7 @@ import {store} from "../../index";
 const MainPage = () => {
 
     const [mainBookData, setMainData] = useState([]);
-    const [randomBookData, setRandomBookData] = useState([]);
+    const [bookData, setBookData] = useState([]);
     const [recommendationsData, setRecommendationsData] = useState([]);
     const [newData, setNewData] = useState([]);
     const [bestData, setBestData] = useState([]);
@@ -24,20 +24,19 @@ const MainPage = () => {
 
         setIsLoading(true)
         store.getAllBooks().then((data) => {
-            setRandomBookData(data.sort(() => Math.random() - 0.5))
-            console.log(randomBookData[0])
+            setMainData(data.slice(0, 15))
+            setNewData(data.slice(40, 60))
+            setBestData(data.slice(61, 80))
+            setTopData(data.slice(81, 100))
+
+            setBookData(data.sort(() => Math.random() - 0.5))
+            console.log(bookData[0])
         }).catch((e) => console.log(e)).finally(() => setIsLoading(false))
     }, []);
 
     useEffect(() => {
-        setRecommendationsData(randomBookData.slice(20, 40))
-        setMainData(randomBookData.slice(0, 15))
-        setNewData(randomBookData.slice(40, 60))
-        setBestData(randomBookData.slice(61, 80))
-        setTopData(randomBookData.slice(81, 100))
-    }, [randomBookData])
-
-
+        setRecommendationsData(bookData.slice(20, 40))
+    }, [bookData])
 
     if (isLoading) {
         return <>

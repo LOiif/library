@@ -39,7 +39,7 @@ const Header = () => {
                         <Link to={`/`} className={'logo nav-link'}>easy-lib</Link>
                         <Link to={`/`} className={'nav-link'}>Главная</Link>
                         <Link to={`/catalog`} className={'nav-link'}>Каталог</Link>
-                        <Link to={`/`} className={'nav-link'}>Топы</Link>
+                        <Link to={`/machines`} className={'nav-link'}>Техническая документация</Link>
                     </div>
 
                     <div className="profile-links">

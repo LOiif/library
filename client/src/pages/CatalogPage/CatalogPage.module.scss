@@ -98,7 +98,7 @@
   border-bottom-right-radius: 2px;
 }
 
-.errorMessage{
+.errorMessage {
   margin: auto auto;
   font-size: 20px;
   font-family: $main-font;
@@ -106,4 +106,68 @@
 
 .loaderWrapper {
   margin: auto auto;
+}
+
+.mainContainer {
+  display: flex;
+}
+
+.searchContainer {
+  margin-right: 30px;
+}
+
+.filtersContainer {
+  width: max-content;
+}
+
+.filtersTitle {
+  font-family: $main-font;
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.searchByFieldset {
+  border: none;
+  font-family: $main-font;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.searchByLegend {
+  margin-bottom: 10px;
+}
+
+.radio {
+  white-space: nowrap;
+  margin-right: 10px;
+}
+
+.searchByItem {
+  display: flex;
+  margin-top: 5px;
+}
+
+.formatFieldset {
+  border: none;
+  font-family: $main-font;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.formatLegend {
+  margin-bottom: 10px;
+}
+
+.formatItem {
+  display: flex;
+  margin-top: 5px;
+}
+
+.filterButton{
+  padding: 12px 25px;
+  color: $white-text-color;
+  background-color: $button-color;
+  font-size: 16px;
+  border: none;
+  border-radius: 2px;
 }

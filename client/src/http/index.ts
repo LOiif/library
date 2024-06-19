@@ -5,7 +5,6 @@ import {IUser} from "../models/IUser";
 
 // prod
 // export const API_URL = `http://79.137.199.47:5000/api`
-
 export const API_URL = `http://localhost:5000/api`
 export const SERVER_URL = `http://localhost:5000`
 export const GOOGLE_API_KEY = 'AIzaSyAoXUwvsCrGZhf31no8STdw9V5YDpwP0FE';
