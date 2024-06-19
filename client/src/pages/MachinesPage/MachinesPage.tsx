@@ -5,6 +5,7 @@ import {store} from "../../index";
 import {Link} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import DocumentService from "../../services/DocumentService";
+import Footer from "../../components/Footer/Footer";
 
 const MachinesPage = () => {
 
@@ -34,6 +35,7 @@ const MachinesPage = () => {
                     </ul>
                 </div>
             </main>
+            <Footer/>
         </>
     );
 };

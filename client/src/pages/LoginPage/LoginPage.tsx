@@ -7,6 +7,7 @@ import Header from "../../components/Header/Header";
 import styles from "./LoginPage.module.scss";
 import {useNavigate} from "react-router-dom";
 import {Triangle} from "react-loader-spinner";
+import Footer from "../../components/Footer/Footer";
 
 const LoginPage: FC = () => {
     const {store} = useContext(Context);
@@ -31,6 +32,7 @@ const LoginPage: FC = () => {
                           ariaLabel="страница загружается"
                           wrapperClass={styles.loaderWrapper}/>
             </main>
+                <Footer/>
         </>
         );
     }
@@ -42,6 +44,7 @@ const LoginPage: FC = () => {
                 <main className={styles.main}>
                     <LoginForm/>
                 </main>
+                <Footer/>
             </>
         );
     } else {

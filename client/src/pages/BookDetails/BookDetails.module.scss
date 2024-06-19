@@ -6,6 +6,7 @@
   font-family: $main-font;
   letter-spacing: $main-letter-spacing;
   background-color: $main-background;
+  min-height: 100vh;
 
   @media (min-width: 600px) {
     padding: 160px 140px 0 140px;

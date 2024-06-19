@@ -2,7 +2,7 @@
 
 .main {
   padding: 180px 20px;
-
+  min-height: 100vh;
   @media (min-width: 600px) {
     padding: 180px 40px;
   }

@@ -9,6 +9,7 @@ import {Triangle} from "react-loader-spinner";
 import FileService from "../../services/FileService"
 import ModalUploadFile from "../../components/ModalUploadFile/ModalUploadFile";
 import BookService from "../../services/BookService";
+import Footer from "../../components/Footer/Footer";
 
 const ProfilePage = () => {
     const navigate = useNavigate()
@@ -131,6 +132,7 @@ const ProfilePage = () => {
             <main className={styles.main}>
                 <div className={styles.notAuth}>Вы не авторизованы (...</div>
             </main>
+            <Footer/>
         </>
     )
 
@@ -162,6 +164,7 @@ const ProfilePage = () => {
                 </div>
                 <ModalUploadFile showModal={showModal} updateUploads={() => setUpdateUploads(!updateUploads)} closeModal={() => setShowModal(false)}></ModalUploadFile>
             </main>
+            <Footer/>
         </>
     );
 };

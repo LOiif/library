@@ -11,6 +11,7 @@ import {observer} from "mobx-react-lite";
 import BookService from "../../services/BookService";
 import {Triangle} from "react-loader-spinner";
 import RatingModal from "../../components/RatingModal/RatingModal";
+import Footer from "../../components/Footer/Footer";
 
 const BookDetails = () => {
     const {store} = useContext(Context);
@@ -150,6 +151,7 @@ const BookDetails = () => {
         return (
             <>
                 <Header/>
+                <main className={styles.main}>
                 <Triangle
                     visible={true}
                     height="60"
@@ -157,7 +159,9 @@ const BookDetails = () => {
                     color="#000000"
                     ariaLabel="страница загружается"
                     wrapperClass={styles.loaderWrapper}
-                />)
+                />
+                </main>
+                <Footer/>
             </>
         )
     }
@@ -270,6 +274,7 @@ const BookDetails = () => {
                     </div>
                 </div>
             </main>
+            <Footer/>
         </>
     );
 };

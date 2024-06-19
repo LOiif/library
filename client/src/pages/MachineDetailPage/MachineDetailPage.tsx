@@ -4,6 +4,7 @@ import styles from "./MachineDetailPage.module.scss"
 import {useLocation} from 'react-router-dom'
 import {store} from "../../index";
 import {observer} from "mobx-react-lite";
+import Footer from "../../components/Footer/Footer";
 
 const MachineDetailPage = () => {
     const location = useLocation()
@@ -46,6 +47,7 @@ const MachineDetailPage = () => {
                         : <></>
                 }
             </main>
+            <Footer/>
         </>
     );
 };

@@ -1,0 +1,56 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 30px 20px 30px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  letter-spacing: 1.6px;
+  color: $main-color;
+  background-color: $main-background;
+  box-shadow: 0 -3px 10px 0 #c5c5c5;
+  @media(min-width: 600px) {
+    padding: 20px 60px 20px 60px;
+  }
+
+  @media(min-width: 1200px) {
+    padding: 20px 120px 20px 120px;
+  }
+}
+
+.authors {
+  display: flex;
+}
+
+.authorText {
+  position: relative;
+  margin-top: 5px;
+
+  &:not(:last-of-type) {
+    margin-right: 15px;
+
+    &:before {
+      content: '';
+      top: 0px;
+      bottom: 0px;
+      right: -8px;
+      width: 1px;
+      background: $main-color;
+      position: absolute;
+    }
+  }
+}
+
+.githubContainer {
+  text-align: center;
+}
+
+.contactContainer {
+  text-align: center;
+}
+
+.authorsContainer {
+  text-align: center;
+}

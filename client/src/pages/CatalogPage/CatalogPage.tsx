@@ -8,6 +8,7 @@ import {Triangle} from "react-loader-spinner";
 import {useLocation} from "react-router-dom";
 import {ReactComponent as RightArrowSvg} from "../../images/arrow_right.svg";
 import {observer} from "mobx-react-lite";
+import Footer from "../../components/Footer/Footer";
 
 const CatalogPage: FC<any> = () => {
     const location = useLocation()
@@ -75,14 +76,17 @@ const CatalogPage: FC<any> = () => {
     if (isLoading) {
         return <>
             <Header/>
-            <Triangle
-                visible={true}
-                height="60"
-                width="60"
-                color="#000000"
-                ariaLabel="страница загружается"
-                wrapperClass={styles.loaderWrapper}
-            />)
+            <main className={styles.main}>
+                <Triangle
+                    visible={true}
+                    height="60"
+                    width="60"
+                    color="#000000"
+                    ariaLabel="страница загружается"
+                    wrapperClass={styles.loaderWrapper}
+                />
+            </main>
+            <Footer/>
         </>
     }
 
@@ -163,6 +167,7 @@ const CatalogPage: FC<any> = () => {
                     </div>
                 </div>
             </main>
+            <Footer/>
         </>
     );
 };

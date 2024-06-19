@@ -7,6 +7,7 @@ import styles from "./RegistrationPage.module.scss";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 import {useNavigate} from "react-router-dom";
 import {Triangle} from "react-loader-spinner";
+import Footer from "../../components/Footer/Footer";
 
 const RegistrationPage: FC = () => {
     const {store} = useContext(Context);
@@ -31,6 +32,7 @@ const RegistrationPage: FC = () => {
                               ariaLabel="страница загружается"
                               wrapperClass={styles.loaderWrapper}/>
                 </main>
+                <Footer/>
             </>
         );
     }
@@ -42,6 +44,7 @@ const RegistrationPage: FC = () => {
                 <main className={styles.main}>
                     <RegistrationForm/>
                 </main>
+                <Footer/>
             </>
         );
     } else {

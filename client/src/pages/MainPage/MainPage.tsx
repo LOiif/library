@@ -5,6 +5,7 @@ import MyCarousel from "../../components/Carousel/Carousel";
 import {observer} from "mobx-react-lite";
 import {Triangle} from "react-loader-spinner";
 import {store} from "../../index";
+import Footer from "../../components/Footer/Footer";
 
 const MainPage = () => {
 
@@ -50,6 +51,7 @@ const MainPage = () => {
                     ariaLabel="страница загружается"
                     wrapperClass={styles.loaderWrapper}
                 />
+                <Footer/>
             </main>
         </>
     }
@@ -68,6 +70,7 @@ const MainPage = () => {
                 <div className={styles.mb}></div>
                 <MyCarousel items={bestData} title={"Лучшее за месяц"} size={1}/>
             </main>
+            <Footer/>
         </div>
     );
 };
